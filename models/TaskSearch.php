@@ -2,8 +2,10 @@
 //Model for data provider
 namespace app\models;
 
+use Yii;
 use yii\base\Model;
 use app\models\Task;
+use yii\data\ActiveDataProvider;
 
 class TaskSearch extends Task
 {
@@ -15,7 +17,7 @@ class TaskSearch extends Task
     ];
   }
 
-  public function Search($params)
+  public function search($params)
   {
     $query = Task::find();
 

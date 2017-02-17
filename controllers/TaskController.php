@@ -7,6 +7,7 @@ use app\models\Task;
 use app\models\TaskSearch;
 use Yii;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 class TaskController extends Controller
 {
@@ -15,12 +16,23 @@ class TaskController extends Controller
     //Action index
     $searchModel = new TaskSearch();
     $dataProvider->$searchModel->search(Yii::$app->request->queryParams);
-    return $this->render('index', ['model' => $model,]);
+
+    return $this->render('index', [
+      'searchModel' => $searchModel,
+      'dataProvider' => $dataProvider,
+    ]);
   }
 
   public function actionCreate()
   {
     //Action for creating task
+    $model = new Task();
+
+    if ($model->load(Yii::$app->request->post()) && $model->save())    {
+      return $this->redirect(['view', 'id' => $model->id]);
+    } else {
+      return $this->render('create', ['model' => $model,]);
+    }
   }
 
   public function actionEdit()
