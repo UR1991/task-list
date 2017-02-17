@@ -35,9 +35,20 @@ class TaskController extends Controller
     }
   }
 
-  public function actionEdit()
+  public function actionEdit($id)
   {
-    //Actiion for editing tasks
+    //Actiion for editing task
+    $model = $this->findModel($id);
+
+    if ($model->load(Yii::$app->request->post()) && $model->save())
+    {
+      return $this->redirect(['view', 'id' =>$model->id ]);
+    }
+    else {
+      return $this->render('edit', [
+        'model' => $model,
+      ]);
+    }
   }
 
   public function actionDelete()
