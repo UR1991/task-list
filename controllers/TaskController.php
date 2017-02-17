@@ -28,8 +28,7 @@ class TaskController extends Controller
   {
     //Action index
     $searchModel = new TaskSearch();
-    //var_dump($searchModel->search(Yii::$app->request->queryParams));
-    //die();
+
     $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
     return $this->render('index', [
@@ -81,14 +80,16 @@ class TaskController extends Controller
   //Search in BD
   public function findModel ($id)
   { //If data not null then return it to action
-    if($model = Task::findOne($id) !== null)
+    if(($model = Task::findOne($id)) !== null)
     {
+      //var_dump($model = Task::findOne($id));
+      //die();
       return $model;
     }
     //Else throw new exception
     else
-    {echo "string";
-      //throw new NotFoundHttpException("Error Processing Request", 1);
+    {
+      throw new NotFoundHttpException("Error Processing Request", 1);
     }
   }
 }
