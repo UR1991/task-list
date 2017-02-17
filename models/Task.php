@@ -2,6 +2,7 @@
 //Model for our app
 namespace app\models;
 
+use Yii;
 use yii\db\ActiveRecord;
 
 class Task extends ActiveRecord
@@ -16,8 +17,8 @@ class Task extends ActiveRecord
   {
     return [
       'id' => 'ID',
-      'task_name' => 'Task name',
-      'task_description' => 'Task description',
+      'task_name' => 'Task Name',
+      'task_description' => 'Task Description',
     ];
   }
 

@@ -8,14 +8,29 @@ use app\models\TaskSearch;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
 
 class TaskController extends Controller
 {
+  public function behaviors()
+  {
+      return [
+          'verbs' => [
+              'class' => VerbFilter::className(),
+              'actions' => [
+                  'delete' => ['POST'],
+              ],
+          ],
+      ];
+  }
+
   public function actionIndex ()
   {
     //Action index
     $searchModel = new TaskSearch();
-    $dataProvider->$searchModel->search(Yii::$app->request->queryParams);
+    //var_dump($searchModel->search(Yii::$app->request->queryParams));
+    //die();
+    $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
     return $this->render('index', [
       'searchModel' => $searchModel,
@@ -72,8 +87,8 @@ class TaskController extends Controller
     }
     //Else throw new exception
     else
-    {
-      throw new NotFoundHttpException("Error Processing Request", 1);
+    {echo "string";
+      //throw new NotFoundHttpException("Error Processing Request", 1);
     }
   }
 }
