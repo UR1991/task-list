@@ -2,9 +2,9 @@
 //Model for our app
 namespace app\models;
 
-use yii\db;
+use yii\db\ActiveRecord;
 
-class Task extends ActionRecord
+class Task extends ActiveRecord
 {
   //return name db
   public static function tableName()
@@ -16,9 +16,18 @@ class Task extends ActionRecord
   {
     return [
       'id' => 'ID',
-      'task_name' => 'name',
-      'task_description' => 'description',
+      'task_name' => 'Task name',
+      'task_description' => 'Task description',
     ];
+  }
+
+  public function rules()
+  {
+      return [
+          [['task_name', 'task_description'], 'required'],
+          [['task_name'], 'string', 'max' => 30],
+          [['task_description'], 'string', 'max' => 255],
+      ];
   }
 }
  ?>

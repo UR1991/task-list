@@ -4,6 +4,7 @@ namespace app\controllers;
 
 //Models what we are use
 use app\models\Task;
+use app\models\TaskSearch;
 use Yii;
 use yii\web\Controller;
 
@@ -12,8 +13,8 @@ class TaskController extends Controller
   public function actionIndex ()
   {
     //Action index
-    $model = new Task();
-    $model->findAll()->asArray()->all();
+    $searchModel = new TaskSearch();
+    $dataProvider->$searchModel->search(Yii::$app->request->queryParams);
     return $this->render('index', ['model' => $model,]);
   }
 
