@@ -12,6 +12,9 @@ class TaskController extends Controller
   public function actionIndex ()
   {
     //Action index
+    $model = new Task();
+    $model->findAll()->asArray()->all();
+    return $this->render('index', ['model' => $model,]);
   }
 
   public function actionCreate()
@@ -27,6 +30,19 @@ class TaskController extends Controller
   public function actionDelete()
   {
     //Action for Deleting tasks
+  }
+  //Search in BD
+  public function findModel ($id)
+  { //If data not null then return it to action
+    if($model = Task::findOne($id) !== null)
+    {
+      return $model;
+    }
+    //Else throw new exception
+    else
+    {
+      throw new NotFoundHttpException("Error Processing Request", 1);
+    }
   }
 }
  ?>

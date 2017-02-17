@@ -11,5 +11,14 @@ class Task extends ActionRecord
   {
     return 'tasks';
   }
+
+  public function attributeLabels()
+  {
+    return [
+      'id' => 'ID',
+      'task_name' => 'name',
+      'task_description' => 'description',
+    ];
+  }
 }
  ?>
