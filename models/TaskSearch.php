@@ -12,7 +12,7 @@ class TaskSearch extends Task
   public function rules ()
   {
     return [
-      [['id'],'integer'],
+      [['id', 'status'],'integer'],
       [['task_name', 'task_description'],'safe'],
     ];
   }

@@ -77,6 +77,27 @@ class TaskController extends Controller
     return $this->render('view', ['model' => $this->findModel($id),]);
   }
 
+  public function actionChangeStatus($id)
+  {$model = $this->findModel($id);
+    if($model->status===0)
+    {
+
+
+      $model->status = 1;
+      $model->save();
+      return $this->redirect(['index']);
+    }else{
+      $model->status = 0;
+      $model->save();
+      return $this->redirect(['index']);
+    }
+  }
+
+  public function mailer()
+  {
+    # code...
+  }
+
   //Search in BD
   public function findModel ($id)
   { //If data not null then return it to action

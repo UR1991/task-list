@@ -19,6 +19,7 @@ class Task extends ActiveRecord
       'id' => 'ID',
       'task_name' => 'Task Name',
       'task_description' => 'Task Description',
+      'status' => 'Status',
     ];
   }
 
