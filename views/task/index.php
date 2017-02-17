@@ -23,7 +23,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
       'task_name',
 
-      ['class' => 'yii\grid\ActionColumn'],
+      ['class' => yii\grid\ActionColumn::className(),'buttons' => [
+                  'update'=>function ($url, $model) {
+                        $customurl=Yii::$app->getUrlManager()->createUrl(['task/edit','id'=>$model['id']]); //$model->id для AR
+                        return \yii\helpers\Html::a( '<span class="glyphicon glyphicon-pencil"></span>', $customurl,
+                                                ['title' => Yii::t('yii', 'Edit'), 'data-pjax' => '0']);
+               }
+            ],
+           'template'=>'{view} {update} {delete}',],
     ]
   ]); ?>
 
