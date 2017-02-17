@@ -51,10 +51,18 @@ class TaskController extends Controller
     }
   }
 
-  public function actionDelete()
+  public function actionDelete($id)
   {
     //Action for Deleting tasks
+    $this->findModel($id)->delete();
+    return $this->redirect(['index']);
   }
+
+  public function actionView($id)
+  {
+    return $this->render('view', ['model' => $this->findModel($id),]);
+  }
+
   //Search in BD
   public function findModel ($id)
   { //If data not null then return it to action
