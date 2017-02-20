@@ -6,7 +6,7 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 use yii\bootstrap\Button;
 
-$this->title = 'Task list';
+$this->title = Yii::t('yii', 'Task list');
 //Use breadcrumbs to set title
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
   <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
 
 <p>
-  <?= Html::a('Create Task', ['create'], ['class' => 'btn btn-success']) ?>
+  <?= Html::a(Yii::t('yii', 'Create Task'), ['create'], ['class' => 'btn btn-success']) ?>
 
 </p>
 
@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
               'update'=>function ($url, $model) {
                     $customurl=Yii::$app->getUrlManager()->createUrl(['task/edit','id'=>$model['id']]); //$model->id для AR
                     return \yii\helpers\Html::a( '<span class="glyphicon glyphicon-pencil"></span>', $customurl,
-                    ['title' => Yii::t('yii', 'Edit'), 'data-pjax' => '0']);
+                    ['title' => Yii::t('yii', 'edit'), 'data-pjax' => '0']);
                },
 
 
@@ -51,10 +51,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                'link' => function ($url, $model, $key) {
-                 return Html::a('Done', ['change-status', 'id'=>$model['id']], ['class' => 'btn btn-success']);
+                 return Html::a(Yii::t('yii', 'Done'), ['change-status', 'id'=>$model['id']], ['class' => 'btn btn-success']);
                },
                'mailer' => function ($url, $model, $key) {
-                 return Html::a('Send email', ['mailer', 'id'=>$model['id']], ['class' => 'btn btn-success']);
+                 return Html::a(Yii::t('yii', 'Send email'), ['mailer', 'id'=>$model['id']], ['class' => 'btn btn-success']);
                },
 
 

@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Html;
 
-$this->title = 'Edit Task';
+$this->title = Yii::t('yii', 'Edit Task');
 $this->params['breadcrumbs'][] = ['label' => 'Task', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
  ?>

@@ -6,6 +6,7 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'language' => 'ru-Ru',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -36,6 +37,19 @@ $config = [
               'encryption' => 'ssl',
             ]
         ],
+        'i18n' => [
+          'translations' => [
+            'app*' => [
+              'class' => 'yii\i18n\PhpMessageSource',
+              'basePath' => '@app/messages',
+              'sourceLanguage' => 'en-US',
+              'fileMap' => [
+                'app' => 'app.php',
+                'app/error' => 'error.php',
+              ],
+            ],
+          ],
+        ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -50,6 +64,11 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+
+            'class' => 'codemix\localeurls\UrlManager',
+            'languages' => ['ru', 'en'],
+            'enableDefaultLanguageUrlCode' => true,
+
             'rules' => [
               '<controller>/<action>' => '<controller>/<action>',
             ],
