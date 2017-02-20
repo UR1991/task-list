@@ -5,6 +5,7 @@ namespace app\controllers;
 //Models what we are use
 use app\models\Task;
 use app\models\TaskSearch;
+use app\models\MailerForm;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -93,9 +94,16 @@ class TaskController extends Controller
     }
   }
 
-  public function mailer()
+  public function actionMailer($id)
   {
-    # code...
+    $message = $this->findModel($id);
+    $model = new MailerForm();
+    $model->sendEmail($message);
+    var_dump($model);
+    die();
+    return $this->redirect(['index']);
+
+
   }
 
   //Search in BD
@@ -103,8 +111,7 @@ class TaskController extends Controller
   { //If data not null then return it to action
     if(($model = Task::findOne($id)) !== null)
     {
-      //var_dump($model = Task::findOne($id));
-      //die();
+
       return $model;
     }
     //Else throw new exception

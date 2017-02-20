@@ -53,6 +53,9 @@ $this->params['breadcrumbs'][] = $this->title;
                'link' => function ($url, $model, $key) {
                  return Html::a('Done', ['change-status', 'id'=>$model['id']], ['class' => 'btn btn-success']);
                },
+               'mailer' => function ($url, $model, $key) {
+                 return Html::a('Send email', ['mailer', 'id'=>$model['id']], ['class' => 'btn btn-success']);
+               },
 
 
 
@@ -62,7 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
             ],
-           'template'=>'{view} {update} {delete} {link}',],
+           'template'=>'{view} {update} {delete} {link} {mailer}',],
     ]
   ]); ?>
 
