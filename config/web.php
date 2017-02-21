@@ -6,7 +6,7 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'language' => 'ru-Ru',
+    'language' => 'en-US',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -50,11 +50,11 @@ $config = [
               //Path to translations files
               'basePath' => '@app/messages',
               //In what language we write the app
-              'sourceLanguage' => 'en-US',
-              'fileMap' => [
-                'app' => 'app.php',
-                'app/error' => 'error.php',
-              ],
+              'sourceLanguage' => 'ru-RU',
+              //'fileMap' => [
+              //  'app' => 'app.php',
+              //  'app/error' => 'error.php',
+            //  ],
             ],
           ],
         ],
@@ -77,7 +77,7 @@ $config = [
             //Use different urlManager
             'class' => 'codemix\localeurls\UrlManager',
             //What languages we are using
-            'languages' => ['ru', 'en'],
+            'languages' => ['en', 'ru'],
             'enableDefaultLanguageUrlCode' => true,
 
             'rules' => [

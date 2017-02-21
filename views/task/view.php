@@ -3,18 +3,18 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('yii', 'Tasks'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Tasks'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
  ?>
  <div class="task-view">
    <h1><?= Html::encode($this->title) ?></h1>
 
    <p>
-     <?= Html::a(Yii::t('yii', 'Edit'), ['edit', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-     <?= Html::a(Yii::t('yii', 'Delete'), ['delete', 'id' => $model->id], [
+     <?= Html::a(Yii::t('app', 'Edit'), ['edit', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+     <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
        'class' => 'btn btn-danger',
        'data' => [
-           'confirm' => Yii::t('yii', 'Are your sure?'),
+           'confirm' => Yii::t('app', 'Are your sure?'),
            'method' => 'post',
        ],
        ]) ?>

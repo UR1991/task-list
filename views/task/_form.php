@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
   <?= $form->field($model, 'task_description')->textInput(['maxlength' => true]) ?>
 
   <div class="form-group">
-    <?= Html::submitButton($model->isNewRecord ? Yii::t('yii', 'Create') : Yii::t('yii', 'Edit'), ['Class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+    <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Edit'), ['Class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
   </div>
 
   <?php ActiveForm::end(); ?>

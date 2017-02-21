@@ -1,8 +1,8 @@
 <?php
 use yii\helpers\Html;
 
-$this->title = Yii::t('yii', 'Create Task');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('yii', 'Task'), 'url' => ['index']];
+$this->title = Yii::t('app', 'Create Task');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Task'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
  ?>
 <div class="task-create">

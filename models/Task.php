@@ -18,8 +18,8 @@ class Task extends ActiveRecord
   {
     return [
       'id' => 'ID',
-      'task_name' => Yii::t('yii', 'Task Name'),
-      'task_description' => Yii::t('yii', 'Task Description'),
+      'task_name' => Yii::t('app', 'Task Name'),
+      'task_description' => Yii::t('app', 'Task Description'),
       'status' => 'Status',
     ];
   }
