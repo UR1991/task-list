@@ -35,8 +35,6 @@ class TaskSearch extends Task
     }
 
     $query->andFilterWhere([ 'id' => $this->id, ]);
-    //var_dump($query);
-    //  die();
     $query->andFilterWhere(['like', 'task_name', $this->task_name])
     ->andFilterWhere(['like', 'task_description', $this->task_description]);
 

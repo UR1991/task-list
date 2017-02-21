@@ -30,18 +30,26 @@ $config = [
             'useFileTransport' => false,
             'transport' => [
               'class' => 'Swift_SmtpTransport',
+              //Set the host
               'host' => 'smtp.yandex.ru',
+              //Set the username
               'username' => 'kirillov.example@yandex.ru',
+              //Set the password
               'password' => 'example1234',
+              //Set the port
               'port' => '465',
+              //Set the encryption type
               'encryption' => 'ssl',
             ]
         ],
+        //Using internationalization(i18n)
         'i18n' => [
           'translations' => [
             'app*' => [
               'class' => 'yii\i18n\PhpMessageSource',
+              //Path to translations files
               'basePath' => '@app/messages',
+              //In what language we write the app
               'sourceLanguage' => 'en-US',
               'fileMap' => [
                 'app' => 'app.php',
@@ -62,10 +70,13 @@ $config = [
         'db' => require(__DIR__ . '/db.php'),
 
         'urlManager' => [
+            //Set "true" for Pretty URL
             'enablePrettyUrl' => true,
             'showScriptName' => false,
 
+            //Use different urlManager
             'class' => 'codemix\localeurls\UrlManager',
+            //What languages we are using
             'languages' => ['ru', 'en'],
             'enableDefaultLanguageUrlCode' => true,
 

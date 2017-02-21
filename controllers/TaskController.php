@@ -24,10 +24,9 @@ class TaskController extends Controller
           ],
       ];
   }
-
+  //Action index
   public function actionIndex ()
   {
-    //Action index
     $searchModel = new TaskSearch();
 
     $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -37,10 +36,9 @@ class TaskController extends Controller
       'dataProvider' => $dataProvider,
     ]);
   }
-
+  //Action for creating task
   public function actionCreate()
   {
-    //Action for creating task
     $model = new Task();
 
     if ($model->load(Yii::$app->request->post()) && $model->save())    {
@@ -49,10 +47,10 @@ class TaskController extends Controller
       return $this->render('create', ['model' => $model,]);
     }
   }
-
+  //Actiion for editing task
   public function actionEdit($id)
   {
-    //Actiion for editing task
+    //Search task by id
     $model = $this->findModel($id);
 
     if ($model->load(Yii::$app->request->post()) && $model->save())
@@ -65,42 +63,48 @@ class TaskController extends Controller
       ]);
     }
   }
-
+  //Action for Deleting tasks
   public function actionDelete($id)
   {
-    //Action for Deleting tasks
+    //Search task by id and delete it
     $this->findModel($id)->delete();
     return $this->redirect(['index']);
   }
-
+  //Action for showing task by id
   public function actionView($id)
   {
     return $this->render('view', ['model' => $this->findModel($id),]);
   }
 
+  //Action for changing done/undone task status
   public function actionChangeStatus($id)
-  {$model = $this->findModel($id);
+  { //Searching task by id
+    $model = $this->findModel($id);
+
+    //If status - 0(undone), change the status to 1(done) and redirect to main page
     if($model->status===0)
     {
-
-
       $model->status = 1;
       $model->save();
       return $this->redirect(['index']);
-    }else{
+    }
+
+    //Else change status to 0(undone) and redirect to main page
+    else
+    {
       $model->status = 0;
       $model->save();
       return $this->redirect(['index']);
     }
   }
 
+  //Action for sending reminder mail
   public function actionMailer($id)
   {
     $message = $this->findModel($id);
     $model = new MailerForm();
     $model->sendEmail($message);
-    var_dump($model);
-    die();
+    //redirect to main page
     return $this->redirect(['index']);
 
 

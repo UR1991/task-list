@@ -13,16 +13,18 @@ class Task extends ActiveRecord
     return 'tasks';
   }
 
+  //Set the lables name
   public function attributeLabels()
   {
     return [
       'id' => 'ID',
-      'task_name' => 'Task Name',
-      'task_description' => 'Task Description',
+      'task_name' => Yii::t('yii', 'Task Name'),
+      'task_description' => Yii::t('yii', 'Task Description'),
       'status' => 'Status',
     ];
   }
 
+  //Set the rules for data
   public function rules()
   {
       return [

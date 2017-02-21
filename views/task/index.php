@@ -5,6 +5,8 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 use yii\bootstrap\Button;
+use yii\bootstrap\Collapse;
+use yii\helpers\ArrayHelper;
 
 $this->title = Yii::t('yii', 'Task list');
 //Use breadcrumbs to set title
@@ -13,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="task-index">
 
   <h1><?= Html::encode($this->title) ?></h1>
-  <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
+  <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
 <p>
   <?= Html::a(Yii::t('yii', 'Create Task'), ['create'], ['class' => 'btn btn-success']) ?>
@@ -22,7 +24,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
   <?= GridView::widget([
     'dataProvider' => $dataProvider,
-    'filterModel' => $searchModel,
 
     'rowOptions' => function ($model, $key, $index, $grid)
     {
@@ -33,9 +34,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     'columns' => [
 
-
-
-      'status',
       'task_name',
 
       ['class' => yii\grid\ActionColumn::className(),'buttons' => [
@@ -45,39 +43,18 @@ $this->params['breadcrumbs'][] = $this->title;
                     ['title' => Yii::t('yii', 'edit'), 'data-pjax' => '0']);
                },
 
-
-
-
-
-
+               //Create button which change status done/undone
                'link' => function ($url, $model, $key) {
                  return Html::a(Yii::t('yii', 'Done'), ['change-status', 'id'=>$model['id']], ['class' => 'btn btn-success']);
                },
+
+               //This button will send the remainder message to email 
                'mailer' => function ($url, $model, $key) {
                  return Html::a(Yii::t('yii', 'Send email'), ['mailer', 'id'=>$model['id']], ['class' => 'btn btn-success']);
                },
-
-
-
-
-
-
-
-
             ],
-           'template'=>'{view} {update} {delete} {link} {mailer}',],
+           'template'=>'{view} {update} {delete} {link} {mailer}',
+         ],
     ]
   ]); ?>
-
-  <?php echo Button::widget([
-    'label' => 'Default',
-    'options' => [
-      'class' => 'btn-lg btn-default',
-      'style' => 'margin:5px',
-    ]
-  ]);?>
-
-
-
-
 </div>
