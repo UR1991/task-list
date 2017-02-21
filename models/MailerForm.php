@@ -8,31 +8,22 @@ class MailerForm extends Model
 {
   public $message;
 
-  /*public function rules()
-  {
-    return [
-      [['fromEmail', 'fromName', 'toEmail', 'subject', 'body'], 'required'],
-      ['fromEmail', 'email'],
-      ['toEmail', 'email']
-    ];
-  }*/
-
   //Function for sending reminder mail
   public function sendEmail($message)
   {
     if ($this->validate())
     {
       //Create tho body of mail
-      $mailbody = '<h3>Dont forget to do:</h3>
-      <p><b>Task name:</b>'.$message->task_name.'</p>
-      <p><b>Task description:</b>'.$message->task_description.'</p>';
+      $mailbody = 'Dont forget to do:
+      Task name:'.$message->task_name.'
+      Task description:'.$message->task_description;
 
       //Compose and send mail
       Yii::$app->mailer->compose()
-        ->setTo('kirillov.example@yandex.ru')
+        ->setTo(Yii::$app->params['adminEmail'])
         ->setFrom('kirillov.example@yandex.ru')
         ->setSubject('Hello!')
-        ->setTextBody($mailbody)
+        ->setHtmlBody($mailbody)
         ->send();
       return true;
     }

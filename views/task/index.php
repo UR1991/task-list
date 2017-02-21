@@ -3,9 +3,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use yii\widgets\Pjax;
 use yii\bootstrap\Button;
-use yii\bootstrap\Collapse;
 use yii\helpers\ArrayHelper;
 
 $this->title = Yii::t('yii', 'Task list');
@@ -33,12 +31,12 @@ $this->params['breadcrumbs'][] = $this->title;
     },
 
     'columns' => [
-
+      //Show Task name
       'task_name',
-
+      //Buttons
       ['class' => yii\grid\ActionColumn::className(),'buttons' => [
               'update'=>function ($url, $model) {
-                    $customurl=Yii::$app->getUrlManager()->createUrl(['task/edit','id'=>$model['id']]); //$model->id для AR
+                    $customurl=Yii::$app->getUrlManager()->createUrl(['task/edit','id'=>$model['id']]); //$model->id для AE
                     return \yii\helpers\Html::a( '<span class="glyphicon glyphicon-pencil"></span>', $customurl,
                     ['title' => Yii::t('yii', 'edit'), 'data-pjax' => '0']);
                },
@@ -48,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                  return Html::a(Yii::t('yii', 'Done'), ['change-status', 'id'=>$model['id']], ['class' => 'btn btn-success']);
                },
 
-               //This button will send the remainder message to email 
+               //This button will send the remainder message to email
                'mailer' => function ($url, $model, $key) {
                  return Html::a(Yii::t('yii', 'Send email'), ['mailer', 'id'=>$model['id']], ['class' => 'btn btn-success']);
                },

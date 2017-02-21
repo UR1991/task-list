@@ -106,8 +106,6 @@ class TaskController extends Controller
     $model->sendEmail($message);
     //redirect to main page
     return $this->redirect(['index']);
-
-
   }
 
   //Search in BD
